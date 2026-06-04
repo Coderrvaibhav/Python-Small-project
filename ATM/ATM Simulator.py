@@ -1,7 +1,7 @@
 # ATM SIMULATOR PROJECT
 balance = 10000
 pin = 1234
-
+history = []
 
 attempts = 3
 
@@ -16,7 +16,8 @@ while attempts > 0:
             print("1.Check Balance")
             print("2. Deposit Money")
             print("3. Withdrow Money")
-            print("4 Exit")
+            print("4.Transaction History")
+            print("5 Exit")
 
             choice = input("Enter Your Choice")
             
@@ -29,6 +30,7 @@ while attempts > 0:
 
                 if amount > 0:
                     balance += amount
+                    history.append(f"Deposite {amount}")
                     print(f"{amount} is deposite successfully")
                     print(f"Total balance is {balance}")
 
@@ -40,13 +42,23 @@ while attempts > 0:
 
                 if amount <= balance:
                     balance -= amount
+                    history.append(f"Withdrawn {amount}")
                     print(f"{amount} withdrow Successfully")
                     print(f"Remaining Balance {balance}")
 
                 else:
                     print("Insufficient balance")
 
-            elif choice == "4":
+            elif choice =="4":
+                if len(history) == 0:
+                    print("No transactions Found")
+                
+                else:
+                    print("\n----- Transaction History -----")
+                    for item in history:
+                        print(item)
+
+            elif choice == "5":
                 print("Thank You for using ATM")
                 break
             else:
