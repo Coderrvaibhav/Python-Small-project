@@ -17,7 +17,12 @@ while attempts > 0:
             print("2. Deposit Money")
             print("3. Withdrow Money")
             print("4.Transaction History")
-            print("5 Exit")
+            print("5.Fast Cash")
+            print("6.Change PIN")
+            print("7.Mini Statement")
+
+
+            print("8 Exit")
 
             choice = input("Enter Your Choice")
             
@@ -59,6 +64,51 @@ while attempts > 0:
                         print(item)
 
             elif choice == "5":
+                print("1. 500")
+                print("2. 1000")
+                print("3. 2000")
+
+                fast = input("Choose Amount")
+
+                if fast == "1":
+                    amount = 500
+                elif fast == "2":
+                    amount = 1000
+                elif fast == "3":
+                    amount = 200
+                
+                else:
+                    print("Invalid Option")
+                    continue
+
+                if amount <= balance:
+                    balance -= amount
+                    history.append(f"fast cash withdrow {amount}")
+                    print(f" {amount} is withdrown")
+
+                else:
+                    print("Insufficient balance")
+
+            elif choice == "6":
+                old_pin= int(input("Enter Old pin"))
+
+                if old_pin == pin:
+                    new_pin = int(input("Enter New pin"))
+                    pin = new_pin
+                    print("Pin changed")
+                else:
+                    print("Invalid Old Pin")
+            elif choice == "7":
+                print("****** Mini statement ********")
+                if len(history) == 0:
+                    print("No history")
+                else:
+                    for item in history[-5:]:
+                        print(item)
+
+
+
+            elif choice == "8":
                 print("Thank You for using ATM")
                 break
             else:
